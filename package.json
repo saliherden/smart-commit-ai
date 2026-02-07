@@ -1,0 +1,80 @@
+{
+    "name": "smart-commit-ai",
+    "displayName": "smart-commit-ai",
+    "description": "Generate commit messages from git diff using AI",
+    "version": "0.0.1",
+    "publisher": "2MSCODE",
+    "engines": {
+        "vscode": "^1.80.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:aiCommit.generate"
+    ],
+    "main": "./dist/extension.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "aiCommit.generate",
+                "title": "AI: Generate Commit Message"
+            },
+            {
+                "command": "aiCommit.setApiKey",
+                "title": "AI: Set API Key"
+            },
+            {
+                "command": "aiCommit.clearApiKey",
+                "title": "AI: Clear API Key"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "AI Commit Settings",
+            "properties": {
+                "aiCommit.apiUrl": {
+                    "type": "string",
+                    "default": "https://api.groq.com/openai/v1/chat/completions",
+                    "description": "The API URL of your AI model service"
+                },
+                "aiCommit.model": {
+                    "type": "string",
+                    "default": "openai/gpt-oss-20b",
+                    "description": "The model to use for generating commit messages"
+                },
+                "aiCommit.temperature": {
+                    "type": "number",
+                    "default": 0.2,
+                    "description": "Temperature parameter for AI completions"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "vscode:prepublish": "npm run package",
+        "compile": "webpack",
+        "watch": "webpack --watch",
+        "package": "webpack --mode production --devtool hidden-source-map",
+        "compile-tests": "tsc -p . --outDir out",
+        "watch-tests": "tsc -p . -w --outDir out",
+        "pretest": "npm run compile-tests && npm run compile && npm run lint",
+        "lint": "eslint src"
+    },
+    "devDependencies": {
+        "@types/mocha": "^10.0.10",
+        "@types/node": "^22.19.9",
+        "@types/vscode": "^1.109.0",
+        "@vscode/test-cli": "^0.0.12",
+        "@vscode/test-electron": "^2.5.2",
+        "eslint": "^9.39.2",
+        "ts-loader": "^9.5.4",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.54.0",
+        "webpack": "^5.104.1",
+        "webpack-cli": "^6.0.1"
+    },
+    "dependencies": {
+        "node-fetch": "^3.3.2"
+    }
+}
