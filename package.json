@@ -4,8 +4,23 @@
     "description": "Generate commit messages from git diff using AI",
     "version": "0.0.1",
     "publisher": "2MSCODE",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/saliherden/smart-commit-ai.git"
+    },
+    "homepage": "https://github.com/saliherden/smart-commit-ai",
+    "bugs": {
+        "url": "https://github.com/saliherden/smart-commit-ai/issues"
+    },
+    "license": "MIT",
+    "keywords": [
+        "git",
+        "commit",
+        "ai",
+        "message"
+    ],
     "engines": {
-        "vscode": "^1.80.0"
+        "vscode": "^1.109.0"
     },
     "categories": [
         "Other"
